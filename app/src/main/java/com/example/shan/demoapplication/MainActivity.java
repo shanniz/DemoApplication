@@ -38,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("ActivityEvent", "onCreate event fired!");
 
-        mQuestionTextView = (TextView)  findViewById(R.id.question_text_view);
-        int question = mQuestionBank[mCurrentIndex].getTextResId();
-        mQuestionTextView.setText(question);
+        try {
+            //mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+            int question = mQuestionBank[mCurrentIndex].getTextResId();
+            mQuestionTextView.setText(question);
+        }catch (Exception ex){
+            Log.e("Exception", ex.getMessage());
+            Toast.makeText(MainActivity.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
         btnFalse = (Button) findViewById(R.id.btn_false);
         btnFalse.setOnClickListener(new View.OnClickListener() {
